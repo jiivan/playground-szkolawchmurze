@@ -1,0 +1,5 @@
+__pycache__/
+*.py[codz]
+
+db.sqlite3
+.mypy_cache
