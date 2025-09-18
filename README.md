@@ -8,6 +8,7 @@ Stwórz projekt "API w DRF do skracania urli". Funkcjonalność ekstremalnie min
 !bash
 
 poetry install
+poetry run ./manage.py migrate
 ```
 
 ## Uruchomienie testów
@@ -25,4 +26,4 @@ poetry run ./manage.py test
 poetry run ./manage.py runserver
 ```
 
-Serwis dostępny pod adresem http://localhost:8000/shrt
+Serwis dostępny pod adresem http://localhost:8000/shrt/
