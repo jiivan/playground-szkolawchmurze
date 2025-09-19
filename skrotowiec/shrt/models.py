@@ -40,7 +40,7 @@ def generate_unique_pk(max_length:int=MAX_SHORTENED_LENGTH) -> str:
         if not ShortenedURL.objects.filter(pk=pk).exists():
             log.debug("Generated pk. pk=%r, tries=%r", pk, i)
             return pk
-    raise ValueError("Couldn't generate unique pk")
+    raise ShortenedURL.Exception("Couldn't generate unique pk")
 
 
 class ShortenedURL(models.Model):
@@ -50,8 +50,14 @@ class ShortenedURL(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
+
     class Meta:
         pass
+
+
+    class Exception(Exception):
+        """Generic exception for ShortenedURL model"""
+
 
     def save(self, *args, **kwargs) -> None:
         if self.pk:  # type: ignore
