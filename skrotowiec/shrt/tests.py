@@ -11,7 +11,7 @@ TEST_URL = 'http://example.com/very-very/long/url/even-longer'
 class GeneratorTestCase(unittest.TestCase):
     def test_short_pk(self) -> None:
         """Basic use case"""
-        result = models.generate_short_pk(length=3)
+        result: str = models.generate_short_pk(length=3)
         self.assertEqual(len(result), 3)
 
 
@@ -24,7 +24,7 @@ class GeneratorDBTestCase(TestCase):
         """Tests when single character pool is already used up"""
         for c in models.ALLOWED_CHARACTERS:
             _ = models.ShortenedURL.objects.create(short=c, full=TEST_URL)
-        result = models.generate_unique_pk(max_length=3)
+        result: str = models.generate_unique_pk(max_length=3)
         self.assertEqual(len(result), 2)
 
 

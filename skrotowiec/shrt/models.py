@@ -36,11 +36,11 @@ def generate_unique_pk(max_length:int=MAX_SHORTENED_LENGTH) -> str:
     if max_length < 1:
         raise ValueError("max_length must be greater than 0")
     for i in range(1, max_length+1):
-        pk = generate_short_pk(length=i)
+        pk: str = generate_short_pk(length=i)
         if not ShortenedURL.objects.filter(pk=pk).exists():
             log.debug("Generated pk. pk=%r, tries=%r", pk, i)
             return pk
-    raise ShortenedURL.Exception("Couldn't generate unique pk")
+    raise ShortenedURL.ModelError("Couldn't generate unique pk")
 
 
 class ShortenedURL(models.Model):
@@ -55,7 +55,7 @@ class ShortenedURL(models.Model):
         pass
 
 
-    class Exception(Exception):
+    class ModelError(Exception):
         """Generic exception for ShortenedURL model"""
 
 
