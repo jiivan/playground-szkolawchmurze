@@ -4,9 +4,7 @@ Stwórz projekt "API w DRF do skracania urli". Funkcjonalność ekstremalnie min
 
 ## Instalacja
 
-```
-!bash
-
+```!bash
 poetry install
 poetry run ./manage.py migrate
 ```
@@ -14,7 +12,6 @@ poetry run ./manage.py migrate
 ## Uruchomienie testów
 
 ```!bash
-
 poetry run ./manage.py test
 ```
 
@@ -22,7 +19,6 @@ poetry run ./manage.py test
 ## Uruchomienie serwisu (devmode)
 
 ```!bash
-
 poetry run ./manage.py runserver
 ```
 
